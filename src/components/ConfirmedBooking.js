@@ -11,15 +11,16 @@ function ConfirmedBooking({ reservationData, navigateToHome }) {
       
       <div className="confirmation-message">
         <p style={{ 
-          fontWeight: 'bold', 
-          color: 'var(--highlight-black)',
+          fontFamily: "'Markazi Text', serif",
+          color: 'var(--primary-green)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '8px',
-          fontSize: '1.8rem'
+          gap: '12px',
+          fontSize: '2.2rem',
+          fontWeight: '500'
         }}>
-          <span style={{ color: 'var(--primary-yellow)', fontSize: '26px' }}>✓</span> 
+          <span style={{ color: 'var(--primary-yellow)', fontSize: '28px' }}>✓</span> 
           Thank you for choosing Little Lemon!
         </p>
       </div>
