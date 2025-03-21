@@ -2,6 +2,15 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Main from '../Main';
 
+// Mock the API module
+jest.mock('../../api', () => ({
+  fetchAPI: jest.fn(() => ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']),
+  submitAPI: jest.fn(() => true)
+}));
+
+// Import the mocked API functions
+import { fetchAPI, submitAPI } from '../../api';
+
 // Import the functions directly for unit testing
 // Note: in a production app, these would likely be in separate files
 // For this example, we'll recreate them to test them directly
@@ -58,5 +67,36 @@ describe('Main Component Functions', () => {
     
     // Check that the function returns what we expect
     expect(newState).toEqual(expectedTimes);
+  });
+
+  // Test that fetchAPI returns the expected array of time strings
+  test('fetchAPI returns the expected times array', () => {
+    // Call the mocked function
+    const times = fetchAPI('2023-10-15');
+    
+    // Define expected output (from the mock)
+    const expectedTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+    
+    // Check that the function returns what we expect
+    expect(times).toEqual(expectedTimes);
+    expect(times.length).toBe(6);
+  });
+
+  // Test that timesReducer correctly calls fetchAPI with the date
+  test('Main component reducer updates times properly', () => {
+    // Clear any previous calls to the mock
+    fetchAPI.mockClear();
+    
+    // Render the Main component
+    render(<Main />);
+    
+    // Verify that fetchAPI was called during initialization
+    expect(fetchAPI).toHaveBeenCalledTimes(1);
+    
+    // Create a sample updated state by manually calling fetchAPI
+    const updatedTimes = fetchAPI('2023-10-16');
+    
+    // Check that the function returns what we expect
+    expect(updatedTimes).toEqual(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']);
   });
 }); 

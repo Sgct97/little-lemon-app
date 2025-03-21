@@ -2,26 +2,22 @@ import React, { useReducer, useState } from 'react';
 import HomePage from './HomePage';
 import BookingPage from './BookingPage';
 import ConfirmationPage from './ConfirmationPage';
+import { fetchAPI, submitAPI } from '../api';
 
-// Initialize times function - will set up initial available times
+// Initialize times function - will fetch available times for today's date
 const initializeTimes = () => {
-  return [
-    '17:00', 
-    '18:00', 
-    '19:00', 
-    '20:00', 
-    '21:00', 
-    '22:00'
-  ];
+  // Get today's date
+  const today = new Date();
+  // Return available times for today
+  return fetchAPI(today);
 };
 
 // Reducer function for managing available times
 const timesReducer = (state, action) => {
   switch (action.type) {
     case 'UPDATE_TIMES':
-      // In a real app, this would fetch times from an API based on the date
-      // For now, we'll return the same times regardless of date
-      return initializeTimes();
+      // Fetch and return available times for the selected date
+      return fetchAPI(action.payload);
     default:
       return state;
   }
@@ -53,9 +49,16 @@ function Main() {
 
   // Form submission handler
   const submitForm = (formData) => {
-    // In a real app, this would submit the form data to an API
-    console.log('Form submitted:', formData);
-    navigateToConfirmation(formData);
+    // Submit form data to API
+    const success = submitAPI(formData);
+    
+    if (success) {
+      // If submission was successful, navigate to confirmation page
+      navigateToConfirmation(formData);
+    } else {
+      // If submission failed, you could handle the error
+      alert('Something went wrong with your reservation. Please try again.');
+    }
   };
 
   return (
