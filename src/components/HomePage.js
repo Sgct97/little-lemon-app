@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import '../styles/Layout.css';
 
-function HomePage({ navigateToReservation }) {
+function HomePage({ navigateToBooking }) {
   return (
     <div>
       <Header />
@@ -14,7 +14,7 @@ function HomePage({ navigateToReservation }) {
               <h2>Chicago</h2>
               <p>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</p>
               <div className="button-container">
-                <button className="primary" onClick={navigateToReservation}>Reserve a table</button>
+                <button className="primary" onClick={navigateToBooking}>Reserve a table</button>
               </div>
             </div>
             <div className="hero-image">
