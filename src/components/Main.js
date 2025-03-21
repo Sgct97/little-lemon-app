@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from 'react';
 import HomePage from './HomePage';
 import BookingPage from './BookingPage';
-import ConfirmationPage from './ConfirmationPage';
+import ConfirmedBooking from './ConfirmedBooking';
 import { fetchAPI, submitAPI } from '../api';
 
 // Initialize times function - will fetch available times for today's date
@@ -44,7 +44,7 @@ function Main() {
 
   const navigateToConfirmation = (formData) => {
     setBookingData(formData);
-    setCurrentPage('confirmation');
+    setCurrentPage('confirmed');
   };
 
   // Form submission handler
@@ -76,8 +76,8 @@ function Main() {
         />
       )}
       
-      {currentPage === 'confirmation' && (
-        <ConfirmationPage 
+      {currentPage === 'confirmed' && (
+        <ConfirmedBooking 
           reservationData={bookingData} 
           navigateToHome={navigateToHome} 
         />
