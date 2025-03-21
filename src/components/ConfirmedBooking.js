@@ -11,7 +11,7 @@ function ConfirmedBooking({ reservationData, navigateToHome }) {
       
       <div className="confirmation-message">
         <p>Your reservation has been confirmed.</p>
-        <p>Thank you for choosing Little Lemon!</p>
+        <p style={{ fontWeight: 'bold', color: '#333333' }}>Thank you for choosing Little Lemon!</p>
       </div>
       
       {reservationData && (
