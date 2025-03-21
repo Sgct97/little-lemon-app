@@ -10,16 +10,16 @@ function ConfirmedBooking({ reservationData, navigateToHome }) {
       </div>
       
       <div className="confirmation-message">
-        <p>Your reservation has been confirmed</p>
         <p style={{ 
           fontWeight: 'bold', 
           color: 'var(--highlight-black)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '8px'
+          gap: '8px',
+          fontSize: '1.8rem'
         }}>
-          <span style={{ color: 'var(--primary-yellow)', fontSize: '22px' }}>✓</span> 
+          <span style={{ color: 'var(--primary-yellow)', fontSize: '26px' }}>✓</span> 
           Thank you for choosing Little Lemon!
         </p>
       </div>
