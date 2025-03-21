@@ -6,7 +6,10 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
     date: '',
     time: '',
     guests: '',
-    occasion: ''
+    occasion: '',
+    name: '',
+    phone: '',
+    email: ''
   });
 
   const handleChange = (e) => {
@@ -29,6 +32,45 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
 
   return (
     <form onSubmit={handleSubmit} className="booking-form">
+      <div className="form-group">
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          className="form-control"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      
+      <div className="form-group">
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          className="form-control"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      
+      <div className="form-group">
+        <label htmlFor="phone">Phone</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          className="form-control"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+        />
+      </div>
+
       <div className="form-group">
         <label htmlFor="date">Date</label>
         <input
